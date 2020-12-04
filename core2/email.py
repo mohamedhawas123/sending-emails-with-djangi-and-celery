@@ -5,7 +5,7 @@ from django.conf import settings
 
 
 
-def send_email_review(email, name, review):
+def send_email_review(name, email, review):
 
     context = {
         'name': name,

@@ -8,7 +8,7 @@
 <body>
     
 
-    <form method="POST" action="" >
+    <form method="POST" action="{% url 'form' %}" >
          {% csrf_token %}
          {{form}}
          <button type="submit">here</button>
