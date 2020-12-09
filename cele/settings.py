@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'core2'
+    'core2',
+    'core3',
+    'django_celery_beat',
+    'django_celery_results'
 ]
 
 MIDDLEWARE = [
@@ -129,3 +132,25 @@ EMAIL_HOST_PASSWORD = 'xmdszfuxyxkealky'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "mohamedhawas123@gmail.com"
+
+
+CELERY_BEAT_SCHEDULE = {
+    'scheduled_task': {
+        "task": "core.tasks.add",
+        "schedule": 5.0,
+        "args": (5,4),
+
+    },
+
+}
+
+CELERY_RESULT_BACKEND = 'django-db'
+
+CELERY_CACHE_BACKEND = 'default'
+
+CACHES = {
+    'default': {
+        "BACKEND" : 'django.core.cache.backends.db.DatabaseCache',
+        "LOCATION": 'cachedb'
+    }
+}
